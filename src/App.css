@@ -1,0 +1,62 @@
+*{margin:0;padding: 0;box-sizing: border-box;text-decoration: none;}
+.DiaryEditor{
+  border: 1px solid #8b952f;
+  text-align: center;
+  height: 600px;
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 16px;
+  top: 50px;
+}
+
+.DiaryEditor h2{
+  margin: 30px 0 20px 0;
+}
+
+.DiaryEditor input[name=author]{
+  border: 1px solid #4ac953;
+    border-radius: 8px;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.DiaryEditor textarea[name=content]{
+  border: 1px solid #4ac953;
+  width: 300px;
+  height: 300px;
+  border-radius: 16px;
+  padding: 10px
+}
+
+.DiaryEditor .emotion-name{
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.DiaryEditor select[name=emotion]{
+  border: 1px solid #8b952f;
+  width: 35px;
+  height: 20px;
+  border-radius: 16px;
+  margin-right: 20px;
+}
+.DiaryEditor .emotion-div{
+  margin-bottom: 20px;
+}
+
+.DiaryEditor .save{
+  width: 100px;
+  height: 30px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  margin-top: 40px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.DiaryEditor .save:hover{
+  background-color: #ccc;
+}
