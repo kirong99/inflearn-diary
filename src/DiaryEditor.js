@@ -1,24 +1,44 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-const DiaryEditor = () => {
+const DiaryEditor = ({onCreate}) => {
+
+    const authorInput = useRef();
+
+    const contentInput = useRef();
 
     const [state, setState] = useState({
         author:"",
         content:"",
-        emotion: 1
+        emotion: 1,
     })
 
     const handleChangeState = (e) => {
-        console.log(e.target.value);
         setState({
             ...state,
-            [e.target.name] : e.target.value
+            [e.target.name] : e.target.value,
         })
     }
 
     const handleSubmit = () => {
-        console.log(state);
+        if(state.author.length < 1) {
+            authorInput.current.focus();
+            alert("작성자 이름을 작성해주세요.")
+            return ;
+        }
+
+        if(state.content.length < 5){
+            contentInput.current.focus();
+            alert("일기 내용은 최소 5글자 이상 입력해주세요.")
+            return ;
+        }
+
+        onCreate(state.author, state.content, state.emotion);
         alert('저장 성공');
+        setState({
+            author: "",
+            content: "",
+            emotion: 1,
+        });
     }
 
     return (
@@ -35,14 +55,10 @@ const DiaryEditor = () => {
             </select>
         </div>
         <div>
-            <input name="author" value={state.author} onChange={(e)=>{
-                setState({handleChangeState});
-            }}/>
+            <input ref={authorInput} name="author" value={state.author} onChange={handleChangeState}/>
         </div>
         <div>
-            <textarea name="content" value={state.content} onChange={(e) => {
-                setState({handleChangeState});
-            }}/>
+            <textarea ref={contentInput} name="content" value={state.content} onChange={handleChangeState}/>
         </div>
         <div>
             <button className='save' onClick={handleSubmit}>일기 저장하기</button>
